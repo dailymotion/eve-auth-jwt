@@ -8,10 +8,10 @@ except ImportError:
 with open('README.rst', 'r') as f:
     readme = f.read()
 
-_VERSION = "1.0.6"
+_VERSION = "1.0.7"
 
 setup(
-    name='partner-eve-auth-jwt',
+    name='eve-auth-jwt',
     version=_VERSION,
     description='Eve JWT authentication',
     long_description=readme,

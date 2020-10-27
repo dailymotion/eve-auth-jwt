@@ -20,7 +20,7 @@ endif
 DEVPI_USER ?= dailymotion
 DEVPI_PASS ?= test1234
 DEVPI_INDEX ?= https://pypi.stg.dm.gg/dailymotion/dm2
-DEVPI_PKG_NAME ?= partner-eve-auth-jwt
+DEVPI_PKG_NAME ?= eve-auth-jwt
 
 PUBLISH_CMD = ./run.sh publish
 PUBLISH_CMD += $(DEVPI_INDEX)
