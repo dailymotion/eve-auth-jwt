@@ -4,7 +4,7 @@
 node("westeros-agent") {
   checkout scm
   setReleaseSSHkey()
-  def packageName = "eve-jwt-auth"
+  def packageName = "partner-eve-auth-jwt"
 
   gazrInitAndCleanWorkspace {
     stage("quality") {

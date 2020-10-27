@@ -11,16 +11,16 @@ ifdef JOB_BASE_NAME
 PROJECT_ENCODED_SLASH = $(subst %2F,$(TO),$(JOB_BASE_NAME))
 PROJECT = $(subst /,$(TO),$(PROJECT_ENCODED_SLASH))
 # Run on CI
-COMPOSE = docker-compose -f docker-compose.yml -f docker-compose.ci.yml -p eve_auth_jwt_$(PROJECT)_$(NUMBER)
+COMPOSE = docker-compose -f docker-compose.yml -f docker-compose.ci.yml -p partner_eve_auth_jwt_$(PROJECT)_$(NUMBER)
 else
 # Run Locally
-COMPOSE = docker-compose -p eve_auth_jwt
+COMPOSE = docker-compose -p partner_eve_auth_jwt
 endif
 
 DEVPI_USER ?= dailymotion
 DEVPI_PASS ?= test1234
 DEVPI_INDEX ?= https://pypi.stg.dm.gg/dailymotion/dm2
-DEVPI_PKG_NAME ?= eve-auth-jwt
+DEVPI_PKG_NAME ?= partner-eve-auth-jwt
 
 PUBLISH_CMD = ./run.sh publish
 PUBLISH_CMD += $(DEVPI_INDEX)

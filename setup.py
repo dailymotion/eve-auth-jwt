@@ -9,7 +9,7 @@ with open('README.rst', 'r') as f:
     readme = f.read()
 
 setup(
-    name='eve-auth-jwt',
+    name='partner-eve-auth-jwt',
     version='1.0.6',
     description='Eve JWT authentication',
     long_description=readme,
