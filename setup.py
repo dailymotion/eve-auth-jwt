@@ -8,7 +8,7 @@ except ImportError:
 with open('README.rst', 'r') as f:
     readme = f.read()
 
-_VERSION = "1.0.7"
+_VERSION = "1.0.8"
 
 setup(
     name='eve-auth-jwt',
