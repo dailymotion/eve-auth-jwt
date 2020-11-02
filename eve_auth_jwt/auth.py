@@ -116,9 +116,11 @@ class JWTAuth(BasicAuth):
         """
         resource_conf = config.DOMAIN[resource]
         audiences = resource_conf.get("audiences", config.JWT_AUDIENCES)
-        return self._perform_verification(token, audiences, allowed_roles)
+        return self._perform_verification(
+            self.secret, token, audiences, allowed_roles
+        )
 
-    def requires_token(self, audiences=None, allowed_roles=None):
+    def requires_token(self, secret=None, audiences=None, allowed_roles=None):
         """
         Decorator for functions that will be protected with token authentication.
 
@@ -139,7 +141,7 @@ class JWTAuth(BasicAuth):
                     )[2]
 
                 if not self._perform_verification(
-                    token, audiences, allowed_roles
+                    secret, token, audiences, allowed_roles
                 ):
                     abort(401)
 
@@ -149,10 +151,13 @@ class JWTAuth(BasicAuth):
 
         return requires_token_wrapper
 
-    def _perform_verification(self, token, audiences, allowed_roles):
+    def _perform_verification(self, secret, token, audiences, allowed_roles):
+        if not secret:
+            secret = self.secret
+
         verified, payload, account_id, roles = verify_token(
             token,
-            self.secret,
+            secret,
             self.issuer,
             request.method,
             audiences,
